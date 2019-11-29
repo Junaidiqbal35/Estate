@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block title %} | About Us {% endblock %}
+{% block content %}
+   <section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">About Event Space</h1>
+            <p class="lead">
+                      Connecting people with unique spaces
+
+                  We’re changing the way people think about accessing commercial real estate.
+            </p >
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="breadcrumb-item active"> About</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section id="about" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h2>We Search For The Perfect Home</h2>
+          <p class="lead">If you have a Space Let Start Earning From It </p>
+          <img src="{% static 'img/photoshoot.jpeg' %}" alt=" about ">
+          <p class="mt-4">We believe that innovation occurs at the intersection of smart people and the spaces that inspire them. This happens every day when Peerspace hosts share their underutilized spaces with professionals seeking truly memorable experiences. Film and photo shoots, offsite meetings, product launches,
+            and charity events are just a few of the many activities that take place on the platform. Whenever space is needed away from the home or office, it can happen with Eventspace. </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+<div class="jumbotron text-center">
+
+      <h2 class="display-4">We Work For You</h2>
+      <h4></h4>
+       <div class = "row justify-content-md-center">
+          <div class="col-sm-2  text-center" >
+            <a href="{% url 'listings' %}" class="btn btn-secondary text-white btn-lg hero undefined ">View Our Featured Listings</a>
+         </div>
+       </div>
+
+
+</div>
+</br>
+  <!-- Team -->
+  <section id="team" class="py-5">
+    <div class="container">
+      <h2 class="text-center">Our Team</h2>
+      <div class="row text-center">
+
+
+            <div class="col-md-4">
+             <img class="img-fluid" src=" {% static 'img/default.jpg' %} " >
+              <h4></h4>
+              <p class=" text-success" >
+              <i class="fas fa-award text-success mb-3"></i> </p>
+              <hr>
+              <p>
+                <i class="fas fa-phone"></i> 034312210000 </p>
+              <p>
+              <i class="fas fa-envelope-open"></i> eventSpace.gmail.com </p>
+            </div>
+            <div class="col-md-4">
+             <img class="img-fluid " src=" {% static 'img/glasses.jpg' %} " width="150px"  >
+              <h4></h4>
+              <p class=" text-success" >
+              <i class="fas fa-award text-success mb-3"></i> </p>
+              <hr>
+              <p>
+                <i class="fas fa-phone"></i> 034312210000 </p>
+              <p>
+              <i class="fas fa-envelope-open"></i> hr.eventspace.com </p>
+            </div>
+             <div class="col-md-4">
+             <img class="img-fluid " src=" {% static 'img/photoshoot.jpeg' %} " width="150px"  >
+              <h4></h4>
+              <p class=" text-success" >
+              <i class="fas fa-award text-success mb-3"></i> </p>
+              <hr>
+              <p>
+                <i class="fas fa-phone"></i> 034312210000 </p>
+              <p>
+              <i class="fas fa-envelope-open"></i> teamowner@gmail.com </p>
+            </div>
+
+
+      </div>
+    </div>
+  </section>
+{% endblock %}

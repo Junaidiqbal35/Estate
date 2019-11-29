@@ -1,0 +1,162 @@
+{% load static %}
+    {% block extrastyle %}
+			<link rel="stylesheet" href="{% static 'css/home.css' %}">
+            <style>
+               .bg-dark {
+
+
+                    height : 50px;
+                }
+            </style>
+    {% endblock %}
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-trans">
+
+
+              <a class=" navbar-brand" href="{%url 'index'%}">
+                <img src="{% static '' %}" class="logo" alt="">
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+                <ul class="navbar-nav">
+
+
+                  <li
+                      {%if '/' == request.path %}
+                          class="nav-item active mr-3"
+                      {% else%}
+                          class ="nav-item-mr-3"
+                      {%endif%}
+                  >
+                    <a class="nav-link" href="{%url 'index'%}">Home</a>
+                  </li>
+                  <li
+                          {% if 'about' in request.path %}
+                            class="nav-item active mr-3"
+                          {% else%}
+                            class ="nav-item-mr-3"
+                        {%endif%}
+                  >
+                    <a class="nav-link" href="{%url 'about'%}">About</a>
+                  </li>
+                  <li
+                       {%if 'listings' in request.path %}
+                          class="nav-item  mr-3"
+                      {% else %}
+                          class ="nav-item-mr-3"
+                      {%endif%}
+
+                  >
+
+                    <a class="nav-link" href="{% url 'listings' %}">Featured Listings</a>
+                  </li>
+
+
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {% if user.profile.photo.url  is not None %}
+
+                                        <img src="{{user.profile.photo.url}}" style="
+                                                                                  vertical-align: middle;
+                                                                                  width: 50px;
+                                                                                  height: 50px;
+                                                                                  border-radius: 50%;
+                                                                                "class="avatar" alt="Avatar">
+                                    {% else %}
+                                   <img src="{% static 'img/default.jpg' %}" alt="avatar" class="avatar-img" data-pin-nopin="true" style="
+                                                                                  vertical-align: middle;
+                                                                                  width: 50px;
+                                                                                  height: 50px;
+                                                                                  border-radius: 50%;
+                                                                                "class="avatar" alt="Avatar">
+                                    {% endif %}
+
+
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="{% url 'dashboard' %}"> Inquery Details </a>
+                                  <a class="dropdown-item" href="{% url 'addspace' %}"> Add Listing </a>
+                                  <a class="dropdown-item" href="{% url 'mylisting' %}"> My Listing </a>
+                                  <a class="dropdown-item" href="{% url 'profile' %}"> Profile </a>
+                                  <a class="dropdown-item" href="{% url 'board' %}">  Board  </a>
+                                  <div class="dropdown-divider"></div>
+                                      <a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">
+                                           <i class="fas fa-sign-out-alt"></i> logout
+
+                                      </a>
+                                     <form action="{% url 'logout'%}" method="POST" id="logout">
+                                       {% csrf_token %}
+                                       <input type="hidden">
+
+                                    </form>
+
+                                </div>
+                        </li>
+
+
+
+
+                    {% else %}
+
+                      <li
+                         {%if 'register' in request.path %}
+                              class="nav-item active mr-3"
+                          {% else %}
+                              class ="nav-item-mr-3"
+                          {%endif%}
+
+                      >
+                        <a class="nav-link" href="{% url 'register1' %}">
+                          <i class="fas fa-user-plus"></i> Register</a>
+                      </li>
+                      <li
+                        {%if 'login' in request.path %}
+                              class="nav-item active mr-3"
+                          {% else %}
+                              class ="nav-item-mr-3"
+                          {% endif %}
+
+                      >
+                        <a class="nav-link" href="{% url 'login' %}">
+                          <i class="fas fa-sign-in-alt"></i>
+
+                          Login</a>
+                      </li>
+                    {% endif %}
+                </ul>
+              </div>
+
+          </nav>
+
+
+{% block extrastyle1 %}
+    <script>
+
+            /**
+         * Listen to scroll to change header opacity class
+         */
+        function checkScroll(){
+            var startY = $('.navbar').height() * 2; //The point where the navbar changes in px
+
+            if($(window).scrollTop() > startY){
+                $('.navbar').addClass("scrolled");
+            }else{
+                $('.navbar').removeClass("scrolled");
+            }
+        }
+
+        if($('.navbar').length > 0){
+            $(window).on("scroll load resize", function(){
+                checkScroll();
+            });
+
+    </script>
+{% endblock %}

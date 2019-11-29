@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<title> Event Space </title>
+	<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+</head>
+<body>
+	
+			<nav class="navbar navbar-default navbar-fixed-top navbar-transparent" class="scrolled">
+			  <div class="container-fluid">
+			  	<div class="navbar-header">
+		     		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+		            </button>
+			  
+			    	<a class="navbar-brand" href="#">Event Space</a>
+			    </div>
+			    <div class="collapse navbar-collapse" id="myNavbar">
+				    <ul class="nav navbar-nav">
+
+				      <li class=""><a href="#"><span class="glyphicon glyphicon-search"></span>  Search </a></li>
+				      
+				    </ul>
+				    <ul class="nav navbar-nav navbar-right">
+					    <li class="dropdown">
+				        	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Activites
+				       	    <span class="caret"></span></a>
+					        <ul class="dropdown-menu dropdown-menu-left">
+					          <li><a href="#">Weddings</a></li>
+					          <li><a href="#">Birthday Parties</a></li>
+					          <li><a href="#">Meetings</a></li>
+					          <li><a href="#">PhotoShoot</a></li>
+					        </ul>
+				        </li>	
+
+				        <li><a id="header_link_add_space" class="add-a-space"><span>List Your Space </span></a></li>
+
+				       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			        </ul>
+			    </div>
+			  </div>
+		    </nav> 
+
+		    <div class = "jumbotron img"  style="background-image:url({% static 'img/mycover.jpg' %}); background-repeat: no-repeat; background-size: cover; background-position: center;">
+
+		     <div class="row justify-content-md-center">
+				 <div class="col-md-6 col-md-offset-3 " id="search">
+
+			    	<h1> Get together somewhere better </h1>
+
+				  	<p> Book thousands of unique spaces directly from local hosts </p>
+				 </div>
+			 </div>
+
+			<div class = "container">	  
+				 <div class="search-form  row inputs">
+					  		<div class="col-sm-4   col-sm-offset-1  search-group " style="margin-left: 6px; margin-right: 6px;">
+					  			<input list="event" id="activity-input" type="text" class="form-control input-lg" name="activity-input" placeholder="Enter your Specific activity" >
+					  			<datalist id="event">
+									  <option value="Wedding">
+									  <option value="Firefox">
+									  <option value="Internet Explorer">
+									  <option value="Opera">
+									  <option value="Safari">
+									  <option value="Microsoft Edge">
+								</datalist>
+				
+					  	    </div> 
+
+					  	    <div class="col-sm-4 metro-input search-group">
+					  	    	<input id="city-input" type="text" class="form-control input-lg" name="city-input" placeholder="Where ?">
+					  	    </div>
+
+					  	    <div class="col-sm-2 search-group text-left" >
+
+					  	    	<button id="searchbar-submit-button" class="btn btn-primary btn-lg hero undefined" >Search</button>
+					  	    </div>
+
+					  	
+			     </div>
+			</div>
+		</div>
+
+		<div class = " row ">
+			<div class = " col-xs-12 text-center" >
+				<h2 class = "activites-heading " style="color: black;"> Popular Activities </h2>
+			 </div>
+	    </div>
+
+	    <div class= "container" id ="activities-section">
+
+	    	
+
+		<div class="row collection-thumbnails">
+			<div class =" col-xs-6 col-md-4">
+				<a href="#" >
+					<div class = "thumbnail">
+					    <div class = "hover-wrapper " > </div>
+						<div class="img-container">
+							<img class="img-responsive" src=" {% static 'img/birthdayparties.jpg' %}" alt="">
+						</div>
+
+						<div class="caption">
+	          				<h3 class="text-center">Birthday Party</h3>
+	        			</div>
+			    	</div>
+			    </a>
+
+		    </div>
+
+
+		    <div class =" col-xs-6 col-md-4">
+				<div class = "thumbnail">
+					<div class="img-container">
+					  <img class=" img-responsive" src="{% static 'img/photoshoot.jpeg' %}"  alt="">
+				    </div>
+				    <div class="caption">
+          				<h3 class="text-center">PhotoShoot</h3>
+
+        			</div>
+		        </div>
+		   </div>
+		    <div class =" col-xs-6 col-md-4">
+				<div class = "thumbnail  ">
+					<div class="img-container">	
+	
+					   <img class ="img-responsive" src=" {% static 'img/meeting.jpg' %} " alt="">
+				    </div>
+				    <div class="caption">
+          				<h3 class="text-center">Meetings</h3>
+        			</div>
+
+		        </div>
+		    </div>
+		    <div class =" col-xs-6 col-md-4">
+				<div class = "thumbnail ">
+					<div class="img-container">	
+						<img class="img-responsive" src="{% static 'img/wedding.jpg' %}" alt="">
+					</div>
+					<div class="caption">
+          				<h3 class="text-center">Wedding destination</h3>
+        			</div>
+		       </div>
+			</div>
+			<div class =" col-xs-6 col-md-4">
+				<div class = "thumbnail ">
+					<div class="img-container">	
+						<img class="img-responsive" src="{% static 'img/workshop.png' %} " alt="">
+					</div>
+					<div class="caption">
+          				<h3 class="text-center">Work Shops </h3>
+        			</div>
+		       </div>
+			</div>
+			<div class =" col-xs-6 col-md-4">
+				<div class = "thumbnail ">
+					<div class="img-container">	
+						<img class="img-responsive" src=" {% static 'img/Babyshower.jpg' %} " alt="">
+					</div>
+					<div class="caption">
+          				<h3 class="text-center">Baby Shower</h3>
+        			</div>
+		       </div>
+			</div>
+	    </div>
+	</div>
+
+	    <div class = " jumbotron text-center " > 
+	    	<h2> How it Work ? </h2>
+	    	<p class="text-center main-subheading ">Find thousands of hosts with one-of-a-kind spaces where you can meet, create, or celebrate.</p>
+
+	    	<div class = "row how-it-work">
+
+	    		<div class = "col-sm-4">
+	    			<p class="hiw-subheading" >Browse homes, lofts, galleries, and more</p>
+	            </div>
+
+	            <div class = "col-sm-4">
+	    			<p class="hiw-subheading " >Compare prices and connect with hosts</p>
+	            </div>
+
+	            <div class = "col-sm-4">
+	    			<p class="hiw-subheading" > Book in just a few clicks</p>
+	            </div>
+	        </div>
+	    </div>
+
+	    <div class = "special-events-section" >
+	    	<div class = "container-fluid ">
+	    		<div class = " row row-height-sm " >
+
+	    			<div class = " col-sm-6 no-gutter col-height-sm event-img-container  col-middle"  style="background-image:url({% static 'img/special-events.jpg' %}); background-repeat: no-repeat; background-size: cover; background-position: center; ">
+	    				<img src="" alt="">
+
+
+	    				<div class = " event-caption " >
+
+	    				<span class ="text-white">	EventSpace Events </span>
+
+	    				</div>
+	    		    </div>
+
+	    		    <div class="col-sm-6 text-xs-center text-sm-left col-height-sm col-middle insurance-text">
+          				<div class="row">
+				            <div class="col-sm-7 text-center events-info-col">
+				              <h3>Planning something big?</h3>
+				              <p>For large and complex events, our team of experts can help you every step of the way.</p>
+				              <br>
+				              <a href="#">
+				                <button class="btn btn-sm btn-success classic" type="button" name="button">Get Started</button>
+				              </a>
+				            </div>
+				         </div>
+       				</div>
+
+
+
+       	   </div>
+       	  </div>
+       	</div>
+
+       	<div class = "jumbotron text-center">
+       		<div class = "row">
+       			<div class = "col-xs-12">
+
+       				<h3> Share your space and start earning </h3>
+       		 		<button class="btn btn-sm btn-success classic" type="button" name="button">Get Started</button>
+       		    </div>   
+
+         	</div>
+        </div>
+
+
+        <footer>
+
+        	<div class = " container-fluid ">
+        		<div class = " row footer-content" >
+        			<div class = "col-xs-12 col-md-4">
+
+        				<h1 style="color: white;"> Event Space </h1>
+        				<p class = "title">Connact with us</p>
+        				<ul class = "footer-social-links">
+        					<a href="">
+	        					<li class= "ico">
+	        						<i class="fab fa-facebook"></i>
+	        					</li>
+	        				</a>
+	        				<a href="">
+	        					<li class= "ico">
+	        						<i class="fab fa-instagram"></i>
+	        					</li>
+	        				</a>
+	        				<a href="">
+	        					<li class= "ico">
+	        						<i class="fab fa-twitter"></i>
+	        					</li>
+	        				</a>
+	        				<a href="">
+	        					<li class= "ico">
+	        						<i class="fab fa-snapchat"></i>
+	        					</li>
+	        				</a>
+        				</ul>
+        			</div>
+
+        		</div>
+            </div>
+
+        	
+
+
+
+        </footer>
+
+	    		    
+
+</body>
+</html>
+<script>
+	
+	/**
+ * Listen to scroll to change header opacity class
+ */
+function checkScroll(){
+    var startY = $('.navbar').height() * 2; //The point where the navbar changes in px
+
+    if($(window).scrollTop() > startY){
+        $('.navbar').addClass("scrolled");
+    }else{
+        $('.navbar').removeClass("scrolled");
+    }
+}
+
+if($('.navbar').length > 0){
+    $(window).on("scroll load resize", function(){
+        checkScroll();
+    });
+}
+</script>

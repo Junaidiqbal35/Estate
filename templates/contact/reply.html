@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<style>
+ .row-height {
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+}
+.inbox-panel-row:{
+    border-width: 1px;
+    border: solid #dbdbdb;
+    height: 120px;
+    overflow: hidden;
+    display: block;
+}
+
+img-col {
+    overflow: hidden;
+}
+.col-middle, .v-center {
+    vertical-align: middle;
+}
+.col-height {
+    display: table-cell;
+    float: none;
+    height: 100%;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+ .avatar-img {
+    margin-bottom: 10px;
+    max-width: 60px;
+
+display: block;
+width: 100%;
+max-width: 90px;
+border: 2px solid #52a3b2;
+border-radius: 50%;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 5px;
+margin-top: 10px;
+background-color: #ececec;
+}
+.listing-img-col {
+    overflow: hidden;
+}
+ li {
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.img-cover {
+    max-width: 200px;
+    min-height: 120px;
+    height: 100%;
+    margin-right: auto;
+    margin-left: 0;
+    object-fit: cover;
+
+}
+a{
+
+    background-color: transparent;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+.message-panel-row {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+</style>
+<body>
+		{% include 'partials/_navbar.html'%}
+
+        <div class="container">
+			<div class="jumbotron ">
+				<h2> You inquired about Space </h2>
+
+				<p>Let  know about your specific space needs. This space is not confirmed yet and may be booked by other guests.</p>
+
+
+
+			</div>
+		</div>
+		<div class="container-fluid">
+
+
+			<div class="row ">
+
+				<div class="col-2 col-lg-2 col-md-2 col-sm-3">
+					<ul class="list-inline">
+						<li class="col-middle">
+							<div>
+							</div>
+						</li>
+						<li class="col-middle hidden-xs">
+							<div>
+								<div class="ellipsis name heavy">{{ contacts.name | capfirst }}
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+					<div class="col-sm-10 col-lg-5 col-md-8">
+						<blockquote class="blockquote" >
+							<p>
+								{{ contacts.message }}
+							</p>
+						</blockquote>
+
+
+
+					 </div>
+
+                 <div class="text-gray text-small message-date">{{ contacts.contact_date }}</div>
+             </div>
+
+
+         </div>
+
+			{% for reply in contacts.replies.all %}
+			<div class="row message-panel-row ">
+
+				<div class="col-2 col-lg-2 col-md-2 col-sm-3  col-height col-middle no-gutter-right">
+					<ul class="list-inline">
+						<li class="col-middle">
+							<div>
+							</div>
+						</li>
+						<li class="col-middle hidden-xs">
+							<div>
+								<div class="ellipsis name heavy">{{contacts.host_name | capfirst}}.
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="col-sm-10 col-lg-5 col-md-8">
+					<blockquote class="blockquote">
+						<p class="mb-0">   {{ reply.message }} </p>
+					</blockquote>
+
+
+
+				 </div>
+				<p class="text-gray text-small">{{ reply.contact_date }}</p>
+
+
+
+             </div>
+
+
+         </div>
+		{% endfor %}
+
+
+		<div class="row-height">
+			<form method="POST">
+				{% csrf_token %}
+				<input type="hidden" name="contact_id" value="{{ contacts.id }}"/>
+				<input type="hidden" name="listing_id" value="{{ contacts.listing_id }}"/>
+				<input type="hidden" name="listing" value="{{ contacts.listing}}"/>
+				<input type="hidden" name="name" value="{{ contacts.name}}"/>
+				<input type="hidden" name="email" value="{{ contacts.email }}"/>
+				<input type="hidden" name="phone" value="{{ contacts.phone }}"/>
+				<input type="hidden" name="user_id" value="{{ contacts.user_id }}"/>
+				<input type="hidden" name="host_id" value="{{ contacts.host_id }}"/>
+				<input type="hidden" name="host_email" value="{{ contacts.host_email }}"/>
+
+
+			<div class="col-sm-8 col-lg-8 input-group  " style="margin-top:10px;">
+				{{form.message}}
+			</div>
+
+				<div class="row justify-content-center" style="margin-top:10px;">
+					<div class="col-sm-6">
+						<button class="btn btn-primary" type="submit" value=" Send Message ">
+							Send Message
+						</button>
+
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	</div>
+</body>
+</html>
+
+
+

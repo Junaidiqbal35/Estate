@@ -1,0 +1,21 @@
+.msg-host-container .form-label {
+    max-width: 330px;
+    text-align: left;
+    margin-top: 11px;
+}
+
+.input[type="number"], input[type="text"],input[type="email"]{
+    height:42px;
+}
+
+.text-gray-dark {
+    padding-left: 16px;
+    margin-top: 20px;
+    font-size: 1em;
+}
+.thumbs .img-fluid{
+
+    height: 250px !important;
+    width: 350px !important;
+    overflow: hidden;
+}

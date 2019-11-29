@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} | Profile {% endblock %}
+{% block content %}
+<style>
+     .avatar-img {
+    margin-bottom: 10px;
+    max-width: 60px;
+
+display: block;
+width: 100%;
+max-width: 90px;
+border: 2px solid #52a3b2;
+border-radius: 50%;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 5px;
+margin-top: 10px;
+background-color: #ececec;
+}
+ li {
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+</style>
+<div class = "jumbotron text-center" >
+        <h2> Profile </h2>
+        <h3> Edit Your Profile</h3>
+
+</div>
+    <!-- Breadcrumb -->
+
+
+  <!-- Alerts -->
+    {% include 'partials/_alerts.html' %}
+    <div class="container">
+
+            <div class="col-2 col-lg-2 col-md-2 col-sm-3  col-height col-middle no-gutter-right">
+					<ul class="list-inline">
+						<li class="col-middle">
+							<div>
+                                 {% if profile.photo.url  is not None %}
+								    <img src="{{ profile.photo.url }}" alt="avatar" class="avatar-img" data-pin-nopin="true">
+                                 {% else %}
+
+                                 {%endif%}
+							</div>
+						</li>
+						<li class="col-middle hidden-xs justify-content-center">
+							<div>
+								<div class="ellipsis name heavy">
+                                    <h3 style="margin-left-5px;">{{profile.user}}</h3>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+
+            <form action="{% url 'profile' %}" class="post_form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!--
+                <div class="form-group">
+                    <label for="phone">phone</label>
+                    <input type="text" name="phone" class="form-control" required   value="{{form.phone}}">
+                  </div>
+                <div class="form-group">
+                      <label for=" photo "> Profile Photo </label>
+                      <input type="file" name="photo" class="form-control" required value="{{form.address}}">
+                </div>
+                <div class="form-group">
+                      <label for="bio">bio</label>
+                      <input type="text" name="bio" class="form-control" required value ="{{form.bio}}">
+                </div>
+                <div class="form-group">
+                      <label for="Email"> Email </label>
+                  <input type="text" name="email" class="form-control" disabled value="{{listing.email}}">
+                </div>
+                !-->
+               <div class="row">
+                   <div class="col-md-6">
+
+                        {{ form | crispy }}
+                        <input type="submit" value="Save Changes" class="btn btn-secondary btn-block">
+                   </div>
+               </div>
+
+            </form>
+        </div>
+
+</div>
+
+
+{% endblock %}
+
+

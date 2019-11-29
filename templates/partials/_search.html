@@ -1,0 +1,97 @@
+1{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+{% block extrastyle %}
+			<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+{% endblock %}
+{% block content %}
+
+     <div class = "jumbotron img" style="background-image:url({% static 'img/mycover.jpg' %}); background-repeat: no-repeat; background-size: cover; background-position: center;">
+
+
+        <div class="row justify-content-md-center">
+				 <div class="col-md-6 col-md-offset-3 " id="search">
+
+			    	<h1> Get together somewhere better </h1>
+
+				  	<p> Book thousands of unique spaces directly from local hosts </p>
+				 </div>
+			 </div>
+
+          <div class="search">
+            <form action  ="{% url 'search' %}">
+              <!-- Form Row 1 -->
+              <div class="form-row justify-md-center">
+                <div class="col-sm-4 input-group mb-3">
+                  <label class="sr-only">Keywords</label>
+                  <input type="text" name="keywords" class="form-control" placeholder="Keyword (Pool, Garage, etc)">
+                </div>
+
+
+              <div class="col-sm-4 input-group mb-3">
+                <label class="sr-only"> City </label>
+                 <select name="city" class="form-control">
+                    <option selected="true" disabled="disabled"> City </option>
+                      {% for key,value in city_choices.items %}
+                        <option value ="{{ key }}"
+                        {% if key == value.city %}
+                         selected
+                        {% endif %}
+                        > {{ value }} </option>
+                      {% endfor %}
+
+                 </select>
+
+              </div>
+              <div class="col-sm-4 mb-3">
+                <label class="sr-only">State</label>
+                <select name="state" class="form-control">
+                  <option selected="true" disabled="disabled">State (All)</option>
+                    {% for key,value in state_choices.items %}
+                      <option value="{{ key }}"
+                      {% if key == value.state %}
+                       selected
+                      {% endif %}
+                      > {{ value }} </option>
+                    {% endfor %}
+
+                </select>
+              </div>
+
+
+
+              </div>
+              <!-- Form Row 2 -->
+              <div class="form-row justify-content-md-center">
+
+
+                <div class=" form-group col-md-6  mb-3">
+                  <label class="sr-only">Price</label>
+                  <select name="price" class="form-control" id="type">
+                    <option selected="true" disabled="disabled">Max Price (Any)</option>
+                    {% for key,value in price_choices.items %}
+                      <option values="{{ key }}"
+                        {% if key == value.price %}
+                        selected
+                       {% endif %}
+                      >
+                        {{ value }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class = "row justify-content-md-center">
+                <div class="col-sm-2  text-center" >
+                  <button type="submit" id="searchbar-submit-button" class="btn btn-primary btn-lg hero undefined"  >Search</button>
+               </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+</br>
+<!-- Alerts -->
+    {% include 'partials/_alerts.html' %}
+
+{% endblock %}

@@ -1,0 +1,14 @@
+
+
+{% extends 'base.html' %}
+{% block title %} | Add A Space {% endblock %}
+{% block content %}
+
+    <h1>New comment</h1>
+    <form method="POST"  action="">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Send</button>
+    </form>
+
+{% endblock %}
+

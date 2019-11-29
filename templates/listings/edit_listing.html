@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} | Manage Your  Space {% endblock %}
+{% block content %}
+
+    <div class="container">
+        <div class = "jumbotron">
+            <h1> Manage your Space </h1>
+        </div>
+      <div class="row">
+        <div class="col-md-10 mx-auto">
+
+
+                {% include 'partials/_alerts.html' %}
+
+
+            <form action="{% url 'update' listing.id %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                   <!-- <div class="form-group">
+
+                    <input type="hidden" name="{{listing.User.id}}" class="form-control" required>
+                  </div>
+                   !-->
+
+                    {{ form | crispy  }}
+
+                    <button type="submit" class="btn btn-sm btn-success btn-block classic"  name="button"> Save Changes</button>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

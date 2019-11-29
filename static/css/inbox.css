@@ -1,0 +1,61 @@
+.row-height {
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+}
+.inbox-panel-row:{
+    border-width: 1px;
+    border: solid #dbdbdb;
+}
+
+img-col {
+    overflow: hidden;
+}
+.col-middle, .v-center {
+    vertical-align: middle;
+}
+.col-height {
+    display: table-cell;
+    float: none;
+    height: 100%;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+ .avatar-img {
+    margin-bottom: 10px;
+    max-width: 60px;
+
+display: block;
+width: 100%;
+max-width: 90px;
+border: 2px solid #52a3b2;
+border-radius: 50%;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 5px;
+margin-top: 10px;
+background-color: #ececec;
+}
+.listing-img-col {
+    overflow: hidden;
+}
+ li {
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.img-cover {
+    max-width: 200px;
+    min-height: 120px;
+    height: 100%;
+    margin-right: auto;
+    margin-left: 0;
+    object-fit: cover;
+
+}

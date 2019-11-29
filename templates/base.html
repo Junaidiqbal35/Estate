@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Font Awesome -->
+      <link rel="stylesheet" href="{% static 'css/all.css' %}">
+      <!-- Bootstrap -->
+      <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+      <!-- Custom -->
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <!-- <link rel="stylesheet" href="{% static 'css/home.css' %}"> !-->
+     <!-- lightbox -->
+      <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
+    <title>Event Space {% block title %} {% endblock %} </title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- topbar -->
+    <!--{% include 'partials/_topbar.html'%} !-->
+
+  <!-- Navbar -->
+    {% include 'partials/_navbar.html'%}
+
+
+
+    {% block content %}
+
+
+    {% endblock %}
+
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %} "></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %} "></script>
+        <script src="{% static 'js/lightbox.min.js' %} "></script>
+        <script src="{% static '/js/main.js' %}"></script>
+  	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+     <!-- Footer -->
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+{% block title %} | Board  {% endblock %}
+{% block content %}
+    <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="breadcrumb-item active"> Browse Listings</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Listings -->
+  <div class = "container">
+      <h2> Save Board (your Favourite Space)</h2>
+  </div>
+  <section id="listings" class="py-4">
+    <div class="container">
+      <div class="row">
+         {% for board in favourite_listing %}
+              <!-- Listing 1 -->
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card listing-preview">
+                <img class="card-img-top img-fluid" src="{{board.photo_main.url}}" alt="">
+                <div class="card-img-overlay">
+                  <h2>
+
+                    <span class="badge badge-secondary text-white">{{board.price | intcomma}}</span>
+                  </h2>
+                </div>
+                <div class="card-body">
+                  <div class="listing-heading text-center">
+                    <h4 class="text-primary">{{board.title}}</h4>
+                    <p>
+                      <i class="fas fa-map-marker text-secondary"></i> {{board.city}}, {{board.state}} {{board.zipcode}}</p>
+                  </div>
+                  <hr><hr>
+                    <a href="{% url 'listing' board.id %}" class="btn btn-primary btn-block" >More Info</a>
+                  </div>
+                </div>
+            </div>
+
+         {% empty %}
+           <div class ="col-md-12">
+             <p> No favourite listing Available </p>
+           </div>
+         {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

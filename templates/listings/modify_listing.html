@@ -1,0 +1,377 @@
+{% extends "base.html" %}
+
+{% load humanize %}
+{% load crispy_forms_tags %}
+{% block title %} | {{listing.title}}  {% endblock %}
+{% block styles %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+
+{% endblock %}
+{% block content %}
+
+
+<div class = "jumbotron img" >
+
+       <img class="" src="{{listing.photo_main.url}}" alt="Main Image" width="480" height="450" style=" background-repeat: no-repeat; background-size: cover; background-position: center;">
+
+
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">{{listing.title}}</h1>
+          <p class="lead">
+            <i class="fas fa-map-marker"></i> {{listing.city}} {{listing.state}} , {{listing.zipcode}}</p>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}"></a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'listings' %} ">Listings</a>
+          </li>
+          <li class="breadcrumb-item active">{{ listing.title }}</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Listing -->
+   <div class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-12 ">
+          <!-- Home Main Image -->
+           <div id="demo" class="carousel slide" data-ride="carousel">
+
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                  <li data-target="#demo" data-slide-to="0" class="active"></li>
+                  <li data-target="#demo" data-slide-to="1"></li>
+                  <li data-target="#demo" data-slide-to="2"></li>
+                </ul>
+
+                <!-- The slideshow -->
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img class="" src="{{listing.photo_main.url}}" alt="Main Image" width="680" height="450">
+                    </div>
+                    <div class="carousel-item">
+                      <img class = "" src="{{listing.photo_1.url}}" alt="Chicago" width="680" height=450"">
+                    </div>
+
+                  </div>
+                  <!-- Left and right controls -->
+                 <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                    <span class="carousel-control-prev-icon" style="color:black;"></span>
+                  </a>
+                  <a class="carousel-control-next" href="#demo" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                  </a>
+
+            </div>
+
+            <!-- Save Board -->
+          <div id = "favourite-section">
+            {% if is_favourite %}
+            <a href="{% url 'favourite' listing.id %}">
+
+              <i class="fas fa-heart fa-lg"></i>
+
+            </a>
+            {% else %}
+            <a href="{% url 'favourite' listing.id %}">
+
+              <i class="far fa-heart fa-lg"></i>
+
+            </a>
+            {% endif %}
+          </div>
+
+          <!-- Fields -->
+              <div class="row mb-5 fields">
+                <div class="col-md-6">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-secondary">
+                      <i class="fas fa-money-bill-alt"></i> Asking Price:
+                      <span class="float-right">{{listing.price | intcomma }} per/hr</span>
+                    </li>
+                    <li class="list-group-item text-secondary">
+                      <i class="fas fa-wifi"></i> wifi:
+                      <span class="float-right">{{listing.wifi}}</span>
+                    </li>
+                    <li class="list-group-item text-secondary">
+                      <i class="fas fa-users"></i> Attendies:
+                      <span class="float-right">{{listing.attendies}}</span>
+                    </li>
+                    <li class="list-group-item text-secondary">
+                      <i class="fas fa-car"></i> Garage:
+                      <span class="float-right">{{listing.garage}}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-secondary">
+                      <i class="fas fa-th-large"></i> Square Feet:
+                      <span class="float-right">{{listing.sqft}}</span>
+                    </li>
+                    <li class="list-group-item text-secondary">
+                      <i class="fas fa-square"></i> Lot Size:
+                      <span class="float-right">{{listing.lot_size}}
+                      </span>
+                    </li>
+                    <li class="list-group-item text-secondary">
+                      <i class="fas fa-calendar"></i> Listing Date:
+                      <span class="float-right">{{listing.list_date}}</span>
+                    </li>
+                    <li class="list-group-item text-secondary">
+                      <i class="fas fa-bed"></i> Host:
+                      <span class="float-right">{{listing.host}}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+        </div>
+         <div class="col-md-3">
+          <div class="card mb-3">
+            <img class="card-img-top img-fluid" src=" {{listing.host.profile.photo.url }}" alt="Host">
+            <div class="card-body">
+              <h5 class="card-title">Property Host</h5>
+              <h6 class="text-secondary">{{listing.host.first_name }}</h6>
+              <h6 class="text-secondary">{{listing.host.profile.bio}}</h6>
+            </div>
+          </div>
+          <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An Inquiry</button>
+        </div>
+
+      </div>
+          <div class="container">
+            <section class="rules-content">
+
+               <div class="row">
+                 <div class="col-lg-8 col-sm-12 " ><h2 > About the Space </h2>
+
+                 </div>
+               </div>
+               <div class="row">
+                  <div class="col-lg-8 col-sm-12" >
+                    <div class="read-more-text-wrapper summary">
+                       <p class="collapse" id="collapseSummary"><span> {{listing.description |  capfirst}} </span></p>
+                        <a class="collapsed" data-toggle="collapse" href="#collapseSummary" aria-expanded="false" aria-controls="collapseSummary">  </a>
+
+                    </div>
+                   </div>
+               </div>
+             </section>
+            <hr class="col-md-12 col-sm-12 no-gutter">
+
+           <section class="rules-content">
+             <div class="row">
+               <div class="col-lg-8 col-sm-12" ><h2>Rules</h2>
+
+               </div>
+             </div>
+             <div class="row">
+                <div class="col-lg-8 col-sm-12" >
+                  <div class=" read-more-content-wrapper summary" >
+                     <p class="collapse" id="collapseSummary"> <span> {{listing.rules | capfirst}} </span></p>
+                     <a class="collapsed" data-toggle="collapse" href="#collapseSummary" aria-expanded="false" aria-controls="collapseSummary">  </a>
+                  </div>
+
+                 </div>
+             </div>
+
+           </section>
+              <hr class="col-md-12 col-sm-12 no-gutter">
+             <section class="rules-content">
+             <div class="row">
+               <div class="col-lg-8 col-sm-12" ><h2>Operating Hours</h2>
+
+               </div>
+             </div>
+             <div class="row">
+                <div class="col-lg-8 col-sm-12" >
+                  <div class=" read-more-content-wrapper summary" >
+                      <h3> All Seven Days </h3>
+                      <h4>  11:am to 8:pm </h4>
+
+                  </div>
+
+                 </div>
+             </div>
+
+           </section>
+          <hr class="col-md-12 col-sm-12 no-gutter">
+
+          <br>
+
+          <br>
+          <div class="comments-content">
+             <div class="row">
+               <div class="col-lg-8 col-sm-12" ><h2> Reviews ( {{ comments.count }} ) </h2>
+
+               </div>
+             </div>
+              <div class="row" style="margin-bottom:10px;">
+                <div class=" col-sm-12" >
+                  <div class=" read-more-content-wrapper">
+                    {% for comment in comments %}
+
+
+                         <span> <img src="{{comment.user.profile.photo.url}}" style="vertical-align: middle;
+                                                                      width: 50px;
+                                                                      height: 50px;
+                                                                      border-radius: 50%;
+                                                                    "class="avatar" alt="Avatar">
+
+                            <p class="mb-0"> {{comment.content}}</p>
+                            <p class="mb-0"> Rated : {{ comment.rating }} of 5</p>
+
+
+                             By <cite title="Source Title">{{comment.user | capfirst}}</cite></span>
+                           <hr class="col-lg-12 col-sm-12 no-gutter">
+
+
+
+                    {% endfor %}
+                  </br>
+                  </br>
+
+                  </div>
+
+
+                    <form method="POST">
+                      {% csrf_token %}
+
+
+                      <div class="form-group">
+
+
+                        {{comment_form.content}}
+                        {{comment_form.rating}}
+
+
+
+                      </div>
+
+
+                      {% if request.user.is_authenticated %}
+                           <input class="btn btn-primary" type="submit" value="Add Review"/>
+                      {% else %}
+                           <input class="btn btn-primary" type="submit" value="Add Review"/>
+                      {% endif %}
+
+
+
+                    </form>
+
+              </div>
+            </div>
+          </div>
+          </section>
+
+    </div>
+    </div>
+   </div>
+
+
+
+
+  <!-- Inquiry Modal -->
+  <div class="modal fade" id="inquiryModal" role="dialog" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="inquiryModalLabel">Make An Inquiry</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body col-xs-12">
+          <div class="container-fluid msg-host-container">
+
+          <div class="row">
+            <div class="col-md-4">
+              <h3 class="tex-sm-left text-xs-center"> Message Host</h3>
+              <div class="col-xs-10 col-xs-offset-1">
+                 <img class="card-img-top" src=" {{listing.host.profile.photo.url }}" alt="Host">
+                  <input type="hidden" name="host_photo" value="{{ listing.host.profile.photo.url }}">
+
+                <div class="host-name text-center" id="host-name-modal">
+                  <a class="link-gray-dark" href=""> Juniaid. </a>
+                </div>
+              </div>
+              <ul class="text-gray-dark msg-ul" style="font-size: 1em;">
+                <li>Introduce yourself</li>
+                <li>Describe your activity</li>
+
+              </ul>
+            </div>
+            <div class="col-md-6 ml-4 form-col">
+              <div class="form-label">
+                <label tabindex="1">When is your activity?</label>
+              </div>
+              <div class="form-modal">
+                  <div class="row">
+
+                    <div class="col-xs-12">
+
+
+                      <form action="{% url 'contact1' %}" method="POST" class="form-horizontal" >
+
+                        {% csrf_token %}
+                        {% if user.is_authenticated %}
+                          <input type="hidden" name="sender" value="{{ user.id }}">
+
+
+
+                        {% else %}
+                          <input type="hidden" name="user_id" value="0">
+
+                        {% endif %}
+
+
+
+                          <input type="hidden" name="receiver" value=" {{ listing.host.id }}">
+                          <input type="hidden" name="listing" value="{{ listing.title }}">
+
+
+
+
+                          <div class="input-group">
+                            <div class="form-group">
+                              <label for="message" class="col-form-label">Message:</label>
+                              <textarea name="message" class="form-control"></textarea>
+                            </div>
+                          </div>
+
+
+                          <hr>
+                           <input type="submit" value="Send" class="btn btn-block btn-secondary">
+                        </form>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

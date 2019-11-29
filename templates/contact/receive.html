@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<style>
+ .row-height {
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+}
+.inbox-panel-row:{
+    border-width: 1px;
+    border: solid #dbdbdb;
+    height: 120px;
+    overflow: hidden;
+    display: block;
+}
+
+img-col {
+    overflow: hidden;
+}
+.col-middle, .v-center {
+    vertical-align: middle;
+}
+.col-height {
+    display: table-cell;
+    float: none;
+    height: 100%;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+ .avatar-img {
+    margin-bottom: 10px;
+    max-width: 60px;
+
+display: block;
+width: 100%;
+max-width: 90px;
+border: 2px solid #52a3b2;
+border-radius: 50%;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 5px;
+margin-top: 10px;
+background-color: #ececec;
+}
+.listing-img-col {
+    overflow: hidden;
+}
+ li {
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.img-cover {
+    max-width: 200px;
+    min-height: 120px;
+    height: 100%;
+    margin-right: auto;
+    margin-left: 0;
+    object-fit: cover;
+
+}
+a{
+
+    background-color: transparent;
+    text-decoration: none;
+    cursor: pointer;
+
+    color: #000b0d !important;
+}
+
+}
+body {
+    font-family: Avenir-Roman,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #343840;
+}
+</style>
+<body>
+		{% include 'partials/_navbar.html'%}
+        <div class="container-fluid">
+			<div class = "jumbotron">
+				<h2> Inbox </h2>
+			</div>
+        {% for contact in contacts %}
+			<div class = "row">
+				<div class="col-sm-12 col-md-6">
+					<h4> All Messages </h4>
+				</div>
+			</div>
+		</div>
+		<div class="body-container">
+
+		    <a class="inbox-panel-row text-gray-darker" href=" {% url 'message' contact.id %}" >
+			<div class="row-height ">
+				<div class="col-sm-2 col-lg-2 col-md-2 hidden-sm hidden-xs col-height col-middle no-gutter-left listing-img-col" style="margin-left:0px;">
+					<div class="ListingImage img-cover">
+							<img class="img-fluid" src=" {% static 'img/birthdayparties.jpg' %} " style="width:200px; height:100px;" alt="">
+
+					</div>
+				</div>
+
+				<div class="col-2 col-lg-2 col-md-2 col-sm-3  col-height col-middle no-gutter-right">
+					<ul class="list-inline">
+						<li class="col-middle">
+							<div>
+								<img src="{% static 'img/default.jpg' %}" alt="avatar" class="avatar-img" data-pin-nopin="true">
+							</div>
+						</li>
+						<li class="col-middle hidden-xs">
+							<div>
+								<div class="ellipsis name heavy">{{contact.name}}.
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="col-xl-6 col-lg-5 col-md-4 col-sm-6 col-xs-9 col-height col-middle">
+
+					<div class="visible-xs name-date-row">
+						<ul class="list-inline">
+					    	<li class="v-bottom">
+
+						    </li>
+					    <li>
+						    <div class="text-small text-right">
+
+                            </div>
+                        </li>
+                        </ul>
+                    </div>
+					    <div class="text-gray-dark ellipsis text-small-xs">
+                            {{ contact.message }}
+                         </div>
+
+
+                 <div class="text-gray text-small message-date">{{ contact.contact_date }}</div>
+
+             	</div>
+
+             <div class="col-md-2 col-sm-3 hidden-xs col-height col-middle text-right"><div>
+             	<div class="text-blue status">inquiry</div><div class="text-gray-dark"><span>$136.88</span>
+             	</div>
+             </div>
+             </div>
+         </div>
+     </a>
+		<hr class="col-lg-12 col-sm-12 no-gutter">
+      {% endfor %}
+	</div>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,282 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+{% block title %} | Welcome {% endblock %}
+{% block extrastyle %}
+			<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+{% endblock %}
+{% block content %}
+
+
+       <div class = "jumbotron img" style="background-image:url({% static 'img/mycover.jpg' %}); background-repeat: no-repeat; background-size: cover; background-position: center;">
+
+		     <div class="row justify-content-md-center">
+				 <div class="col-md-6 col-md-offset-3 " id="search">
+
+			    	<h1> Get together somewhere better </h1>
+
+				  	<p> Book thousands of unique spaces directly from local hosts </p>
+				 </div>
+			 </div>
+
+          <div class="search">
+            <form action  ="{% url 'search' %}">
+              <!-- Form Row 1 -->
+
+              <div class="form-row justify-content-center">
+                <div class="col-sm-6 col-md-2 input-group mb-3">
+                  <label class="sr-only">Keywords</label>
+                  <input type="text" name="keywords" class="form-control" placeholder="Keyword (Pool, Garage, etc)">
+                </div>
+
+
+              <div class="col-sm-6 col-md-2 input-group mb-3">
+                <label class="sr-only"> City </label>
+                 <select name="city" class="form-control">
+                    <option selected="true" disabled="disabled"> City </option>
+                      {% for key,value in city_choices.items %}
+                        <option value ="{{ key }}"
+                        {% if key == value.city %}
+                         selected
+                        {% endif %}
+                        > {{ value }} </option>
+                      {% endfor %}
+
+                 </select>
+
+              </div>
+              <div class="col-sm-6 col-md-2 mb-3">
+                <label class="sr-only">State</label>
+                <select name="state" class="form-control">
+                  <option selected="true" disabled="disabled">State (All)</option>
+                    {% for key,value in state_choices.items %}
+                      <option value="{{ key }}"
+                      {% if key == value.state %}
+                       selected
+                      {% endif %}
+                      > {{ value }} </option>
+                    {% endfor %}
+
+                </select>
+              </div>
+		  </div>
+
+              <!-- Form Row 2 -->
+              <div class="form-row justify-content-center">
+
+
+                <div class=" form-group col-sm-10 col-md-2  mb-3">
+                  <label class="sr-only">Price</label>
+                  <select name="price" class="form-control" id="type">
+                    <option selected="true" disabled="disabled">Max Price (Any)</option>
+                    {% for key,value in price_choices.items %}
+                      <option values="{{ key }}"
+                        {% if key == value.price %}
+                        selected
+                       {% endif %}
+                      >
+                        {{ value }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class = "row justify-content-center">
+                <div class="col-sm-4  text-center" >
+                  <button type="submit" id="searchbar-submit-button" class="btn btn-primary btn-lg hero undefined"  >Search</button>
+               </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+</br>
+<!-- Alerts -->
+    {% include 'partials/_alerts.html' %}
+
+
+  <!-- Listings -->
+  <div class = "row ">
+			<div class = "col-xs-12 mx-auto">
+				<h2 class = "activites-heading"> Popular Activities </h2>
+			 </div>
+	    </div>
+
+	    <div class= "container" id ="activities-section">
+
+		<div class="row collection-thumbnails">
+			<div class =" col-6 col-md-4">
+				<a href="{% url 'birthday' %}" >
+					<div class = "img-thumbnail">
+					    <div class = "hover-wrapper " > </div>
+						<div class="img-container">
+							<img class="img-fluid" src=" {% static 'img/birthdayparties.jpg' %} " alt="">
+						</div>
+
+						<div class="caption">
+	          				<h3 class="text-center">Birthday Party</h3>
+	        			</div>
+			    	</div>
+			    </a>
+
+		    </div>
+
+
+		    <div class =" col-6 col-md-4">
+				<a href="{% url 'photoshoot' %}">
+					<div class = "img-thumbnail">
+						<div class="img-container">
+						  <img class=" img-fluid" src=" {% static 'img/photoshoot.jpeg' %} " alt="">
+						</div>
+						<div class="caption">
+							<h3 class="text-center">PhotoShoot</h3>
+						</div>
+					</div>
+				</a>
+		   </div>
+		    <div class =" col-6 col-md-4">
+				<a href="{% url 'meeting' %}">
+				<div class = "img-thumbnail ">
+					<div class="img-container">
+
+					   <img class ="img-fluid" src=" {% static 'img/meeting.jpg' %} " alt="">
+				    </div>
+				    <div class="caption">
+          				<h3 class="text-center">Meetings</h3>
+        			</div>
+
+		        </div>
+				</a>
+		    </div>
+		    <div class =" col-6 col-md-4">
+				<a href="{% url 'wedding' %}">
+					<div class = "img-thumbnail ">
+						<div class="img-container">
+							<img class="img-fluid" src=" {% static 'img/wedding.jpg' %} " alt="">
+						</div>
+						<div class="caption">
+          				<h3 class="text-center">Wedding destination</h3>
+        				</div>
+		      		 </div>
+				</a>
+			</div>
+			<div class =" col-6 col-md-4">
+				<a href="{% url 'workshop' %}">
+
+					<div class = "img-thumbnail ">
+						<div class="img-container">
+							<img class="img-fluid" src=" {% static 'img/workshop.png' %} " alt="">
+						</div>
+						<div class="caption">
+          					<h3 class="text-center">Work Shops </h3>
+        				</div>
+		      		 </div>
+				</a>
+			</div>
+			<div class =" col-6 col-md-4">
+				<a href="{% url 'bridal'%}">
+
+					<div class = "img-thumbnail ">
+						<div class="img-container">
+							<img class="img-fluid" src=" {% static 'img/Babyshower.jpg' %} " alt="">
+						</div>
+						<div class="caption">
+							<h3 class="text-center">Bridal Shower</h3>
+						</div>
+				   </div>
+				</a>
+			</div>
+	    </div>
+	</div>
+
+	    <div class = " jumbotron text-center how-it-work-section" >
+	    	<h2> How it Work ? </h2>
+	    	<p class="text-center main-subheading ">Find thousands of hosts with one-of-a-kind spaces where you can meet, create, or celebrate.</p>
+
+	    	<div class = "row how-it-work">
+
+	    		<div class = "col-sm-4">
+	    			<p class="hiw-subheading" >Browse homes, lofts, galleries, and more</p>
+	            </div>
+
+	            <div class = "col-sm-4">
+	    			<p class="hiw-subheading " >Compare prices and connect with hosts</p>
+	            </div>
+
+	            <div class = "col-sm-4">
+	    			<p class="hiw-subheading" > Book in just a few clicks</p>
+	            </div>
+	        </div>
+	    </div>
+
+	    <div class = "special-events-section" >
+	    	<div class = "container-fluid ">
+	    		<div class = " row row-height-sm " >
+
+	    			<div class = " col-sm-6 no-gutter col-height-sm event-img-container  col-middle" style="background-image:url({% static 'img/special-events.jpg' %}); background-repeat: no-repeat; background-size: cover; background-position: center; ">
+
+	    				<div class = " event-caption " >
+
+	    				<span class ="text-white">	EventSpace Events </span>
+
+	    				</div>
+	    		    </div>
+
+	    		    <div class="col-sm-6 text-xs-center text-sm-left col-height-sm col-middle insurance-text">
+          				<div class="row">
+				            <div class="col-sm-7 text-center events-info-col">
+				              <h3>Planning something big?</h3>
+				              <p>For large and complex events, our team of experts can help you every step of the way.</p>
+				              <br>
+				              <a href="#">
+				                <button class="btn btn-sm btn-success classic" type="button" name="button">Get Started</button>
+				              </a>
+				            </div>
+				         </div>
+       				</div>
+
+
+
+       	   </div>
+       	  </div>
+       	</div>
+
+       	<div class = "jumbotron text-center">
+       		<div class = "row">
+       			<div class = "col-12 mx-auto">
+
+       				<h3> Share your space and start earning </h3>
+       		 		<button class="btn btn-sm btn-success classic" type="button" name="button">Get Started</button>
+       		    </div>
+
+         	</div>
+        </div>
+
+
+
+
+
+  <!-- Dynamic Listings -->
+
+
+<!--
+  <section id="services" class="py-5 bg-secondary text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <i class="fas fa-comment fa-4x mr-4"></i>
+          <hr>
+          <h3>Consulting Services</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae, provident iste consequatur
+            hic dignissimos ratione ea quae.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-home fa-4x mr-4"></i>
+          <hr>rignissimos ratione ea quae.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-->
+
+{% endblock%}

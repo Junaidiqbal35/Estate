@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} | Registration {% endblock %}
+{% block content %}
+    <section id="register" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h4>
+                <i class="fas fa-user-plus"></i> Register</h4>
+            </div>
+            <div class="card-body">
+                {% include 'partials/_alerts.html' %}
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4"> </legend>
+                            {{ form | crispy }}
+                    </fieldset>
+                    <input type="submit" value="Register" class="btn btn-secondary btn-block">
+                     <div class="bordet-top pt-3 text-center " >
+                          <small class="text-muted">
+                              Already Have an Account? <a class="ml-2" href="{%url 'login'%}"> Sign In</a>
+                          </small>
+                      </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

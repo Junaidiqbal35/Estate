@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% block title %} | Add A Space {% endblock %}
+{% block content %}
+
+    <div class="container">
+         <div class = "container">
+            <h2> Add Your Space and (Start Earning From it)</h2>
+
+        </div>
+      <div class="row">
+        <div class="col-md-9 mx-auto">
+
+                {% include 'partials/_alerts.html' %}
+
+                <form action="{% url 'addspace' %}" class="post_form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                <div class="form-row">
+
+                  <div class="form-group col-md-12">
+                      <label for="title"> Title: </label>
+
+                          {{form.title}}
+
+                   </div>
+
+                <div class="form-group col-md-6 ">
+                  <label for="address">Address:</label>
+
+                      {{form.address}}
+
+
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="city">City:</label>
+
+                      {{form.city}}
+
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="state">State:</label>
+
+                      {{form.state}}
+
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="zipcode">Zipcode: </label>
+
+                      {{form.zipcode}}
+
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="description">Description:</label>
+
+                      {{form.description}}
+                </div>
+                  <div class="form-group col-md-12">
+                    <label for="Rules ">Rules:</label>
+
+                      {{form.rules}}
+
+                  </div>
+                 <div class="form-group col-md-6">
+                  <label for="price">Price</label>
+
+                      {{form.price}}
+
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Attendies">Attendies:</label>
+
+                      {{form.attendies}}
+
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Wif">Wifi:</label>
+
+                      {{form.wifi}}
+
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Bedrooms">Bedrooms:</label>
+
+                      {{form.bedrooms}}
+
+                </div>
+
+                 <div class="form-group col-md-6">
+                  <label for="bathroom">Bathrooms:</label>
+
+                      {{form.bathrooms}}
+
+                </div>
+                 <div class="form-group col-md-6">
+                  <label for="garage">garage</label>
+
+                      {{form.garage}}
+
+                </div>
+                 <div class="form-group col-md-6">
+                  <label for="sqft">Sqft:</label>
+
+                      {{form.sqft}}
+
+                </div>
+
+
+                 <div class="form-group col-md-6">
+                  <label for="lot_size">Iot_Size: </label>
+
+                      {{form.lot_size}}
+                </div>
+                <div class="input-group mb-3 col-md-6">
+                  <div class="custom-file">
+
+                      {{form.photo_main}}
+                  </div>
+                </div>
+                <div class="input-group mb-3 col-md-6">
+                    <div class="custom-file">
+                      {{form.photo_1}}
+                  </div>
+                </div>
+                <div class="input-group mb-3 col-md-6">
+                  <div class="custom-file">
+
+                      {{form.photo_2}}
+                  </div>
+                </div>
+                <div class="input-group mb-3 col-md-6">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile05">
+                    <label class="custom-file-label" for="inputGroupFile02">Choose photo</label>
+                      {{form.photo_3}}
+                  </div>
+                </div>
+                <input type="submit" value="Save" class="btn btn-secondary btn-block">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+{% endblock %}
